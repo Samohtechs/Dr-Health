@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^2.0.6
   email_validator: ^2.0.1
   rxdart: ^0.27.2 # listen for notification
+  internet_connection_checker: ^0.0.1+2
 
 dev_dependencies:
   flutter_test:
