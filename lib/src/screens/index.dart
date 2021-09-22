@@ -24,8 +24,10 @@ class _HomeState extends State<Home> {
   //===============================================================
 
   //--------------------| List of Pills from database |----------------------
+  // ignore: deprecated_member_use
   List<Pill> allListOfPills = List<Pill>();
   final Repository _repository = Repository();
+  // ignore: deprecated_member_use
   List<Pill> dailyPills = List<Pill>();
   //=========================================================================
 
@@ -145,6 +147,7 @@ class _HomeState extends State<Home> {
                     ? SizedBox(
                         width: double.infinity,
                         height: 100,
+                        // ignore: deprecated_member_use
                         child: WavyAnimatedTextKit(
                           textStyle: TextStyle(
                               fontSize: 20.0,
@@ -165,7 +168,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
 
   //-------------------------| Click on the calendar day |-------------------------
 

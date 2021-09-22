@@ -15,17 +15,14 @@ class Notifications {
     //-----------------------------| Inicialize local notifications |--------------------------------------
     var initializationSettingsAndroid =
     new AndroidInitializationSettings('app_icon');
-    var initializationSettingsIOS = new IOSInitializationSettings();
     var initializationSettings = new InitializationSettings(
-        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+        android: initializationSettingsAndroid);
     FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
     flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: onSelectNotification);
     return flutterLocalNotificationsPlugin;
     //======================================================================================================
   }
-
-
 
   //---------------------------------| Show the notification in the specific time |-------------------------------
   Future showNotification(String title, String description, int time, int id, FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
@@ -42,16 +39,15 @@ class Notifications {
                 playSound: true,
                 showWhen: true,
                 autoCancel: true,
-                visibility: NotificationVisibility.private,
+                visibility: NotificationVisibility.public,
                 ongoing: true,
+                enableVibration: true,
+                vibrationPattern: Int64List.fromList([8]),
                 enableLights: true,
-                channelShowBadge: true,
                 subText: "Med Reminder",
                 icon: 'ic_launcher',
                 largeIcon: DrawableResourceAndroidBitmap('ic_launcher'),
                 sound: RawResourceAndroidNotificationSound('longcoldsting'), // '$_alarmName'
-                enableVibration: true,
-                vibrationPattern: Int64List.fromList([8]),
                 color: Colors.cyanAccent,
                 importance: Importance.high,
                 priority: Priority.high,

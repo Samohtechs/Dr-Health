@@ -1,6 +1,8 @@
+import 'package:dr_health/src/components/Feedback/feedback.dart';
 import 'package:dr_health/src/components/navigations.dart';
 import 'package:dr_health/src/screens/CoronaScreen/corona_stats_screen.dart';
 import 'package:dr_health/src/screens/MedicineScreen/add_new_medicine.dart';
+import 'package:dr_health/src/screens/SettingsScreen/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -55,6 +57,8 @@ class _MedicineAppState extends State<MedicineApp> {
         "/home": (context) => Home(),
         "/AddNewMedicine": (context) => AddNewMedicine(),
         "CoronaUpdateScreen": (context) => CoronaPage(),
+        "SettingsScreen": (context) => SettingsPage(),
+        "FeedBackScreen": (context) => UserFeedback(),
       },
       initialRoute: "/",
     );
