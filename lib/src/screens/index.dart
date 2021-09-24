@@ -79,7 +79,6 @@ class _HomeState extends State<Home> {
       splashColor: Colors.lightGreenAccent[100],
     );
 
-
     // HOME BODY
     return Scaffold(
       floatingActionButton: addReminderButton,
@@ -87,21 +86,21 @@ class _HomeState extends State<Home> {
       backgroundColor: Color.fromRGBO(248, 248, 248, 1),
       // APPLICATION BAR
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart_outlined),
-            onPressed: () {
-              // Navigator.pushNamed(context, 'SearchScreen');
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/AddNewMedicine');
             },
-          ),
-          ShakeAnimatedWidget(
-            enabled: true,
-            duration: Duration(milliseconds: 2000),
-            curve: Curves.linear,
-            shakeAngle: Rotation.deg(z: 30),
-            child: Icon(
-              Icons.notifications_none,
-              size: 35.0,
+            child: ShakeAnimatedWidget(
+              enabled: true,
+              duration: Duration(milliseconds: 2000),
+              curve: Curves.linear,
+              shakeAngle: Rotation.deg(z: 30),
+              child: Icon(
+                Icons.notifications_none,
+                size: 35.0,
+              ),
             ),
           )
         ],
@@ -144,23 +143,23 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: deviceHeight * 0.02),
                 dailyPills.isEmpty
-                    ? SizedBox(
-                        width: double.infinity,
-                        height: 100,
-                        // ignore: deprecated_member_use
-                        child: WavyAnimatedTextKit(
-                          textStyle: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          text: [
-                            "No Reminders Today..."
-                          ],
-                          isRepeatingAnimation: true,
-                          speed: Duration(milliseconds: 150),
-                        ),
-                      )
-                    : MedicinesList(dailyPills,setData,flutterLocalNotificationsPlugin)
+                  ? SizedBox(
+                      width: double.infinity,
+                      height: 100,
+                      // ignore: deprecated_member_use
+                      child: WavyAnimatedTextKit(
+                        textStyle: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        text: [
+                          "No Reminders Today..."
+                        ],
+                        isRepeatingAnimation: true,
+                        speed: Duration(milliseconds: 150),
+                      ),
+                    )
+                  : MedicinesList(dailyPills, setData, flutterLocalNotificationsPlugin)
               ],
             ),
           ),

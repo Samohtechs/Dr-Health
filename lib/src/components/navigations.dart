@@ -1,5 +1,7 @@
 // @dart=2.12
 
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:dr_health/src/screens/HealthDataScreen/health_data_screen.dart';
 import 'package:dr_health/src/screens/SearchScreen/search.dart';
 import 'package:dr_health/src/screens/index.dart';

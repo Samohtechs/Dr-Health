@@ -1,5 +1,7 @@
 // @dart=2.12
 
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:dr_health/src/screens/HealthDataScreen/Activity/activity_screen.dart';
 import 'package:dr_health/src/screens/HealthDataScreen/Mindfulness/mindfulness_screen.dart';
 import 'package:dr_health/src/screens/HealthDataScreen/Nutrition/nutrition_screen.dart';
@@ -152,7 +154,7 @@ class ArticlesCard extends StatelessWidget {
         child: Card(
           shadowColor: Colors.grey,
           elevation: 5.0,
-          color: Colors.blueAccent,
+          color: Theme.of(context).primaryColor.withOpacity(0.9),
           child: ListTile(
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),

@@ -9,6 +9,7 @@ class SleepData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 6.0,
         shadowColor: Colors.blueGrey,
         title: Text("Health Data"),

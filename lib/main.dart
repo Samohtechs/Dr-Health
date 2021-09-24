@@ -1,4 +1,3 @@
-import 'package:dr_health/src/components/Feedback/feedback.dart';
 import 'package:dr_health/src/components/navigations.dart';
 import 'package:dr_health/src/screens/CoronaScreen/corona_stats_screen.dart';
 import 'package:dr_health/src/screens/MedicineScreen/add_new_medicine.dart';
@@ -58,7 +57,6 @@ class _MedicineAppState extends State<MedicineApp> {
         "/AddNewMedicine": (context) => AddNewMedicine(),
         "CoronaUpdateScreen": (context) => CoronaPage(),
         "SettingsScreen": (context) => SettingsPage(),
-        "FeedBackScreen": (context) => UserFeedback(),
       },
       initialRoute: "/",
     );

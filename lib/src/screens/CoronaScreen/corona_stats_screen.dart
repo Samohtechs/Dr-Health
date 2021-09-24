@@ -1,9 +1,11 @@
 // @dart=2.12
 
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:dr_health/src/handlers/corona_datasource_handler.dart';
+import 'package:dr_health/src/handlers/datasource_handler.dart';
 import 'package:dr_health/src/screens/CoronaScreen/country_screen.dart';
 import 'package:dr_health/src/components/panels/info_panel.dart';
 import 'package:dr_health/src/components/panels/most_affected_countries.dart';
@@ -60,6 +62,7 @@ class _CoronaPageState extends State<CoronaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
         title: Text(
           'COVID-19 TRACKER',

@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:dr_health/src/models/pill.dart';
-import 'package:timezone/data/latest.dart' as tz;
+import 'package:dr_health/src/utils/med_preference.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -26,6 +25,9 @@ class Notifications {
 
   //---------------------------------| Show the notification in the specific time |-------------------------------
   Future showNotification(String title, String description, int time, int id, FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
+  bool isAlarmSet = false;
+  final String _alarmName = isAlarmSet ? MedicinePreferences.getAlarmRingtone() : 'longcoldsting';
+  print(_alarmName);
     await flutterLocalNotificationsPlugin.zonedSchedule(
         id.toInt(),
         title,
@@ -45,9 +47,9 @@ class Notifications {
                 vibrationPattern: Int64List.fromList([8]),
                 enableLights: true,
                 subText: "Med Reminder",
-                icon: 'ic_launcher',
-                largeIcon: DrawableResourceAndroidBitmap('ic_launcher'),
-                sound: RawResourceAndroidNotificationSound('longcoldsting'), // '$_alarmName'
+                icon: 'launcher_logo',
+                largeIcon: DrawableResourceAndroidBitmap('launcher_logo'),
+                sound: RawResourceAndroidNotificationSound('$_alarmName'), // 'longcoldsting'
                 color: Colors.cyanAccent,
                 importance: Importance.high,
                 priority: Priority.high,
@@ -80,8 +82,8 @@ class Notifications {
       context: _context,
       builder: (_) {
         return new AlertDialog(
-          title: Text("PayLoad"),
-          content: Text("Payload : $payload"),
+          title: Text("Reminder"),
+          content: Text("Congratulations\nMedicine Taken. : $payload"),
         );
       },
     );

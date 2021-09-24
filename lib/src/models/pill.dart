@@ -1,20 +1,22 @@
 class Pill {
   int id;
   String name;
+  String description;
   String amount;
   String type;
-  int howManyWeeks;
+  // int howManyWeeks;
   String medicineForm;
   int time;
   int notifyId;
 
   Pill(
       {this.id,
-      this.howManyWeeks,
+      // this.howManyWeeks,
       this.time,
       this.amount,
       this.medicineForm,
       this.name,
+      this.description,
       this.type,
       this.notifyId});
 
@@ -24,9 +26,10 @@ class Pill {
     Map<String, dynamic> map = Map();
     map['id'] = this.id;
     map['name'] = this.name;
+    map['description'] = this.description;
     map['amount'] = this.amount;
     map['type'] = this.type;
-    map['howManyWeeks'] = this.howManyWeeks;
+    // map['howManyWeeks'] = this.howManyWeeks;
     map['medicineForm'] = this.medicineForm;
     map['time'] = this.time;
     map['notifyId'] = this.notifyId;
@@ -40,9 +43,10 @@ class Pill {
     return Pill(
         id: pillMap['id'],
         name: pillMap['name'],
+        description: pillMap['description'],
         amount: pillMap['amount'],
         type: pillMap['type'],
-        howManyWeeks: pillMap['howManyWeeks'],
+        // howManyWeeks: pillMap['howManyWeeks'],
         medicineForm: pillMap['medicineForm'],
         time: pillMap['time'],
         notifyId: pillMap['notifyId']);

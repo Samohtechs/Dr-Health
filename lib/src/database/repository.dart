@@ -15,8 +15,8 @@ class Repository{
     return _database;
   }
 
-  //insert something to database
-  Future<int> insertData(String table,Map<String,dynamic> data) async{
+  //insert data to database
+  Future<int> insertData(String table, Map<String,dynamic> data) async {
     Database db = await database;
     try{
       return await db.insert(table, data);
@@ -26,7 +26,7 @@ class Repository{
   }
 
   //get all data from database
-  Future<List<Map<String,dynamic>>> getAllData(table) async{
+  Future<List<Map<String,dynamic>>> getAllData(table) async {
     Database db = await database;
     try{
       return db.query(table);

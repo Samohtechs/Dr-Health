@@ -46,7 +46,6 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
                         ),
                       ); 
                     }
-
                     final data = snapshot.requireData;  
                     return ListView.builder(
                       itemCount: data.size,

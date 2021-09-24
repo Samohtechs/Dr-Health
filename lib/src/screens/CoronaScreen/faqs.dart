@@ -1,7 +1,9 @@
 // @dart=2.12
 
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:flutter/material.dart';
-import 'package:dr_health/src/handlers/corona_datasource_handler.dart';
+import 'package:dr_health/src/handlers/datasource_handler.dart';
 
 class FAQPage extends StatelessWidget {
   @override

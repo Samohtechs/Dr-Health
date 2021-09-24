@@ -1,5 +1,7 @@
 // @dart=2.12
 
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -36,6 +38,7 @@ class _CountryPageState extends State<CountryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search),onPressed: (){
             showSearch(context: context, delegate: Search(countryData));

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dr_health/src/handlers/corona_datasource_handler.dart';
+import 'package:dr_health/src/handlers/datasource_handler.dart';
 import 'package:dr_health/src/screens/CoronaScreen/faqs.dart';
 import 'package:url_launcher/url_launcher.dart';
 

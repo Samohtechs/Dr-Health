@@ -32,23 +32,19 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
   //list of medicines forms objects
   final List<MedicineType> medicineTypes = [
     MedicineType("Syrup", Image.asset("assets/images/syrup.png"), true),
-    MedicineType(
-        "Pill", Image.asset("assets/images/pills.png"), false),
-    MedicineType(
-        "Capsule", Image.asset("assets/images/capsule.png"), false),
-    MedicineType(
-        "Cream", Image.asset("assets/images/cream.png"), false),
-    MedicineType(
-        "Drops", Image.asset("assets/images/drops.png"), false),
-    MedicineType(
-        "Syringe", Image.asset("assets/images/syringe.png"), false),
+    MedicineType("Pill", Image.asset("assets/images/pills.png"), false),
+    MedicineType("Capsule", Image.asset("assets/images/capsule.png"), false),
+    MedicineType("Cream", Image.asset("assets/images/cream.png"), false),
+    MedicineType("Drops", Image.asset("assets/images/drops.png"), false),
+    MedicineType("Syringe", Image.asset("assets/images/syringe.png"), false),
   ];
 
   //-------------Pill object------------------
-  int howManyWeeks = 1;
+  // int howManyWeeks = 1;
   String selectWeight;
   DateTime setDate = DateTime.now();
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
   final TextEditingController amountController = TextEditingController();
 
   //==========================================
@@ -78,6 +74,10 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
       key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(248, 248, 248, 1),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text("Add Reminder"),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -86,45 +86,19 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: deviceHeight * 0.05,
-                child: FittedBox(
-                  child: InkWell(
-                    child: Icon(Icons.arrow_back),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+                height: deviceHeight * 0.35,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: FormFields(
+                    // howManyWeeks,
+                    nameController,
+                    descriptionController,
+                    amountController,
+                    selectWeight,
+                    popUpMenuItemChanged,
+                    // sliderChanged,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: deviceHeight * 0.01,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 15.0),
-                height: deviceHeight * 0.05,
-                child: FittedBox(
-                    child: Text(
-                  "Add Pills",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3
-                      .copyWith(color: Colors.black),
-                )),
-              ),
-              SizedBox(
-                height: deviceHeight * 0.03,
-              ),
-              Container(
-                height: deviceHeight * 0.37,
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: FormFields(
-                        howManyWeeks,
-                        selectWeight,
-                        popUpMenuItemChanged,
-                        sliderChanged,
-                        nameController,
-                        amountController)),
               ),
               Container(
                 height: deviceHeight * 0.035,
@@ -230,24 +204,29 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                   ],
                 ),
               ),
-              Spacer(),
-              Container(
-                height: deviceHeight * 0.09,
-                width: double.infinity,
-                child: Flexible(
-                  child: PlatformFlatButton(
-                    handler: () async => savePill(),
-                    color: Theme.of(context).primaryColor,
-                    buttonChild: Text(
-                      "Done",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17.0),
+              SizedBox(
+                height: 22.0,
+              ),
+              Flexible(
+                flex: 2,
+                child: Container(
+                  height: deviceHeight * 0.09,
+                  width: double.infinity,
+                  child: Flexible(
+                    child: PlatformFlatButton(
+                      handler: () async => savePill(),
+                      color: Theme.of(context).primaryColor,
+                      buttonChild: Text(
+                        "Add My Reminder",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 17.0),
+                      ),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -256,8 +235,8 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
   }
 
   //slider changer
-  void sliderChanged(double value) =>
-      setState(() => this.howManyWeeks = value.round());
+  // void sliderChanged(double value) =>
+  //     setState(() => this.howManyWeeks = value.round());
 
   //choose popum menu item
   void popUpMenuItemChanged(String value) =>
@@ -311,8 +290,19 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
 
   //--------------------------------------SAVE PILL IN DATABASE---------------------------------------
   Future savePill() async {
+    //check if medicine name, description and amount is set
+    if (nameController.text.isEmpty) {
+      snackbar.showSnack(
+        "Medicine name is required", _scaffoldKey, null);
+    } else if(descriptionController.text.isEmpty) {
+      snackbar.showSnack(
+        "Medicine description is required", _scaffoldKey, null);
+    } else if(amountController.text.isEmpty) {
+      snackbar.showSnack(
+        "Please provide dosage amount", _scaffoldKey, null);
+    }
     //check if medicine time is lower than actual time
-    if (setDate.millisecondsSinceEpoch <=
+    else if (setDate.millisecondsSinceEpoch <=
         DateTime.now().millisecondsSinceEpoch) {
       snackbar.showSnack(
           "Check your medicine time and date", _scaffoldKey, null);
@@ -320,15 +310,18 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
       //create pill object
       Pill pill = Pill(
           amount: amountController.text,
-          howManyWeeks: howManyWeeks,
-          medicineForm: medicineTypes[medicineTypes.indexWhere((element) => element.isChoose == true)].name,
+          // howManyWeeks: howManyWeeks,
+          medicineForm: medicineTypes[medicineTypes
+                  .indexWhere((element) => element.isChoose == true)]
+              .name,
           name: nameController.text,
+          description: descriptionController.text,
           time: setDate.millisecondsSinceEpoch,
           type: selectWeight,
           notifyId: Random().nextInt(10000000));
 
       //---------------------| Save as many medicines as many user checks |----------------------
-      for (int i = 0; i < howManyWeeks; i++) {
+      for (int i = 0; i < 1; i++) {
         dynamic result =
             await _repository.insertData("Pills", pill.pillToMap());
         if (result == null) {
@@ -337,8 +330,17 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
         } else {
           //set the notification schneudele
           tz.initializeTimeZones();
-          tz.setLocalLocation(tz.getLocation('Europe/Warsaw'));
-          await _notifications.showNotification(pill.name, pill.amount + " " + pill.medicineForm + " " + pill.type, time,
+          tz.setLocalLocation(tz.getLocation('Africa/Nairobi'));
+          await _notifications.showNotification(
+              pill.name,
+              pill.description +
+                  "\n" +
+                  pill.amount +
+                  " " +
+                  pill.medicineForm +
+                  " Type: " +
+                  pill.type,
+              time,
               pill.notifyId,
               flutterLocalNotificationsPlugin);
           setDate = setDate.add(Duration(milliseconds: 604800000));

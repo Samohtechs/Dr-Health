@@ -15,6 +15,7 @@ class _HealhDataState extends State<HealthData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: Text("Health Data"),
       ),
       backgroundColor: kWhiteColor,

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
@@ -18,9 +20,9 @@ class MedicineCard extends StatelessWidget {
     final bool isEnd = DateTime.now().millisecondsSinceEpoch > medicine.time;
 
     return Card(
-        elevation: 0.0,
+        elevation: 8.0,
         margin: EdgeInsets.symmetric(vertical: 7.0),
-        color: Colors.white,
+        color: Theme.of(context).primaryColor.withOpacity(1.0), //Colors.white,
         child: ListTile(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -38,14 +40,16 @@ class MedicineCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             subtitle: Text(
-              "${medicine.amount} ${medicine.medicineForm}",
+              "${medicine.description}" + "\n" + "${medicine.amount} ${medicine.medicineForm}",
               style: Theme.of(context).textTheme.headline5.copyWith(
-                  color: Colors.grey[600],
+                  color: Colors.white70,
                   fontSize: 15.0,
+                  fontWeight: FontWeight.w500,
                   decoration: isEnd ? TextDecoration.lineThrough : null),
-              maxLines: 1,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
+            isThreeLine: true,
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -53,8 +57,8 @@ class MedicineCard extends StatelessWidget {
                   DateFormat("HH:mm").format(
                       DateTime.fromMillisecondsSinceEpoch(medicine.time)),
                   style: TextStyle(
-                      color: Colors.grey[500],
-                      fontWeight: FontWeight.w400,
+                      color: Colors.white70,
+                      fontWeight: FontWeight.w500,
                       fontSize: 15,
                       decoration: isEnd ? TextDecoration.lineThrough : null),
                 ),

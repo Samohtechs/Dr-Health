@@ -23,19 +23,6 @@ class AppDrawer extends StatelessWidget {
                   )),
               child: Text(""),
             ),
-            ListTile(
-              leading: Icon(Icons.history_outlined, size: whSize * 15,),
-              title: Text(
-                'My Dosage History',
-                style: TextStyle(
-                  fontSize: whSize * 7,
-                ),
-              ),
-              onTap: () {
-                Navigator.popAndPushNamed(context, 'MedHistoryScreen');
-              },
-            ),
-            Divider(),
             Padding(
               padding: const EdgeInsets.only(left: 15.0),
               child: Text(
@@ -49,7 +36,7 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.web_outlined, size: whSize * 15,),
               title: Text(
-                'www.uhc.co.tz',
+                'Visit UHC Website',
                 style: TextStyle(
                   fontSize: whSize * 7,
                 ),
@@ -61,7 +48,7 @@ class AppDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.mail_outline_outlined, size: whSize * 15,),
               title: Text(
-                'healthcentre@udsm.ac.tz',
+                'Mail UHC',
                 style: TextStyle(
                   fontSize: whSize * 7,
                 ),
@@ -73,6 +60,9 @@ class AppDrawer extends StatelessWidget {
                 final url = 'mailto:$toEmail?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}';
                 if(await canLaunch(url)) {
                   await launch(url);
+                } else {
+                  launch(url);
+                  print('launched');
                 }
               },
             ),
@@ -95,8 +85,17 @@ class AppDrawer extends StatelessWidget {
                   fontSize: whSize * 7,
                 ),
               ),
-              onTap: () {
-                Navigator.popAndPushNamed(context, 'FeedBackScreen');
+              onTap: () async {
+                String toEmail = 'healthdr.customer.care@gmail.com';
+                String subject = 'Dr. Health Client Feedback';
+                String message = 'Please provide your short feedback...';
+                final url = 'mailto:$toEmail?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}';
+                if(await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  launch(url);
+                  print('launched');
+                }
               },
             ),
             Divider(),
