@@ -13,14 +13,15 @@ class DoctorSearchScreen extends StatefulWidget {
 class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
   @override
   Widget build(BuildContext context) {
-  final Stream<QuerySnapshot> users = FirebaseFirestore.instance.collection('doctors_details').snapshots();
+    final Stream<QuerySnapshot> users = FirebaseFirestore.instance.collection('doctors_details').snapshots();
 
-  String? doctorName;
-  String? doctorPos;
-  String? doctorProfile;
-  String? doctorAbout;
-  String? doctorPhoneNo;
-  String? doctorWhatsAppNo;
+    String? doctorName;
+    String? doctorPos;
+    String? doctorProfile;
+    String? doctorAbout;
+    String? doctorPhoneNo;
+    String? doctorWhatsAppNo;
+    
     return Scaffold(
       backgroundColor: kWhiteColor,
       body: SafeArea(

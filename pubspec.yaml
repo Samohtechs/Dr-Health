@@ -40,6 +40,9 @@ dependencies:
   email_validator: ^2.0.1
   rxdart: ^0.27.2 # listen for notification
   internet_connection_checker: ^0.0.1+2
+  font_awesome_flutter: ^9.1.0
+  curved_navigation_bar: ^1.0.1
+  flutter_speed_dial: ^4.4.0+1
 
 dev_dependencies:
   flutter_test:

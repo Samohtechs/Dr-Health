@@ -24,9 +24,24 @@ class _DoctorListState extends State<DoctorList>{
   Widget build(BuildContext context) {
     return ListTile(
       horizontalTitleGap: 3.0,
-      leading: Icon(Icons.person),
-      title: Text(widget.doctorName),
-      subtitle: Text(widget.doctorPos),
+      leading: CircleAvatar(
+        backgroundColor: Colors.lightBlue[100],
+        backgroundImage: AssetImage('assets/images/loading.gif'),
+        child: CircleAvatar(
+          minRadius: 45,
+          maxRadius: 50,
+          backgroundColor: Colors.transparent,
+          backgroundImage: NetworkImage(widget.doctorProfile),
+        ),
+      ), //Icon(Icons.person),
+      title: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Text(widget.doctorName),
+      ),
+      subtitle: Padding(
+        padding: const EdgeInsets.only(left: 9.0),
+        child: Text(widget.doctorPos),
+      ),
       trailing: TextButton(
         onPressed: () {
           Navigator.push(
