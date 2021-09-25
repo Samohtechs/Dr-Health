@@ -19,19 +19,20 @@ class DoctorList extends StatefulWidget {
   _DoctorListState createState() => _DoctorListState();
 }
 
-class _DoctorListState extends State<DoctorList>{
+class _DoctorListState extends State<DoctorList> {
+  bool isProfile = false;
   @override
   Widget build(BuildContext context) {
     return ListTile(
       horizontalTitleGap: 3.0,
       leading: CircleAvatar(
         backgroundColor: Colors.lightBlue[100],
-        backgroundImage: AssetImage('assets/images/loading.gif'),
         child: CircleAvatar(
           minRadius: 45,
           maxRadius: 50,
           backgroundColor: Colors.transparent,
-          backgroundImage: NetworkImage(widget.doctorProfile),
+          foregroundImage: isProfile ? NetworkImage(widget.doctorProfile) : null,
+          backgroundImage: AssetImage('assets/images/loading.gif'),
         ),
       ), //Icon(Icons.person),
       title: Padding(

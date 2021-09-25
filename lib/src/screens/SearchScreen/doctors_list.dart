@@ -40,6 +40,30 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
                   stream: users,
                   builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                     
+                    if(snapshot.connectionState == ConnectionState.none) {
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                            SizedBox(height: 8.0),
+                            Text("Not currently connected to any asynchronous computation", textAlign: TextAlign.center,),
+                          ]
+                        ),
+                      ); 
+                    }
+                    if(snapshot.connectionState != ConnectionState.active) {
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                            SizedBox(height: 8.0),
+                            Text("Not Connected to an active asynchronous computation.", textAlign: TextAlign.center,),
+                          ]
+                        ),
+                      ); 
+                    }
                     if(snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
                         child: Column(
@@ -47,29 +71,33 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
                           children: [
                             CircularProgressIndicator(),
                             SizedBox(height: 8.0),
-                            Text("Loading, please wait..."),
+                            Text("Loading, please wait...", textAlign: TextAlign.center,),
                           ]
                         ),
                       ); 
                     }
-                    final data = snapshot.requireData;  
-                    return ListView.builder(
-                      itemCount: data.size,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        doctorName = data.docs[index]['Fname'] + ' ' + data.docs[index]['Lname'];
-                        doctorPos = data.docs[index]['Position'];
-                        doctorAbout = data.docs[index]['About'];
-                        doctorProfile = data.docs[index]['Profile'];
-                        doctorPhoneNo = data.docs[index]['Contact'];
-                        doctorWhatsAppNo = data.docs[index]['WhatsApp_Contact'];
-                        return DoctorList(
-                          doctorName!, doctorPos!, doctorProfile!, doctorAbout!, doctorPhoneNo!, doctorWhatsAppNo!
-                        );
-                      }
-                    ); 
+                    try {
+                      final data = snapshot.requireData;  
+                      return ListView.builder(
+                        itemCount: data.size,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          doctorName = data.docs[index]['Fname'] + ' ' + data.docs[index]['Lname'];
+                          doctorPos = data.docs[index]['Position'];
+                          doctorAbout = data.docs[index]['About'];
+                          doctorProfile = data.docs[index]['Profile'];
+                          doctorPhoneNo = data.docs[index]['Contact'];
+                          doctorWhatsAppNo = data.docs[index]['WhatsApp_Contact'];
+                          return DoctorList(
+                            doctorName!, doctorPos!, doctorProfile!, doctorAbout!, doctorPhoneNo!, doctorWhatsAppNo!
+                          );
+                        }
+                      ); 
+                    } catch(Ex) {
+                      return Container();
+                    }
                   }
                 ),
               ),

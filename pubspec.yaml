@@ -34,16 +34,12 @@ dependencies:
   flutter_sms: ^2.3.1
   flutter_native_splash: ^1.2.1
   path: ^1.8.0
-  # can be removed
-  animated_splash_screen: ^1.1.0 
-  shared_preferences: ^2.0.6
-  email_validator: ^2.0.1
   rxdart: ^0.27.2 # listen for notification
   internet_connection_checker: ^0.0.1+2
   font_awesome_flutter: ^9.1.0
   curved_navigation_bar: ^1.0.1
   flutter_speed_dial: ^4.4.0+1
-  fluttertoast: ^8.0.8
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:

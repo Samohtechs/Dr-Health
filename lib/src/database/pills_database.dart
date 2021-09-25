@@ -1,10 +1,7 @@
-
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class PillsDatabase{
-
   setDatabase() async{
     String databasePath = await getDatabasesPath();
     String path = join(databasePath,"medicine_db");
@@ -13,5 +10,4 @@ class PillsDatabase{
     });
     return database;
   }
-
 }

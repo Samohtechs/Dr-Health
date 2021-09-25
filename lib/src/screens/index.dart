@@ -74,6 +74,7 @@ class _HomeState extends State<Home> {
       icon: Icons.control_point_rounded,
       // animatedIcon: AnimatedIcons.menu_close,
       backgroundColor: Theme.of(context).primaryColor,
+      activeBackgroundColor: Colors.transparent,
       overlayColor: Colors.black,
       overlayOpacity: 0.4,
       spacing: 12,
@@ -97,7 +98,6 @@ class _HomeState extends State<Home> {
         )
       ],
     );
-
     // HOME BODY
     return WillPopScope(
       onWillPop: () async {
@@ -110,8 +110,7 @@ class _HomeState extends State<Home> {
       },
       child: SafeArea(
         top: false, left: false, right: false,
-        minimum: EdgeInsets.only(bottom: 40.0),
-        maintainBottomViewPadding: true,
+        minimum: EdgeInsets.only(bottom: 5.0),
         child: Scaffold(
           floatingActionButton: addReminderButton,
           floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
