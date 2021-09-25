@@ -3,7 +3,7 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
 
 import 'package:dr_health/src/screens/HealthDataScreen/health_data_screen.dart';
-import 'package:dr_health/src/screens/SearchScreen/search.dart';
+import 'package:dr_health/src/screens/SearchScreen/doctors_list.dart';
 import 'package:dr_health/src/screens/index.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _NavigationState extends State<Navigation>
   Widget build(BuildContext context) {
     // Screens
     final _kTabPages = <Widget>[
-      Search(), // at index 0, Search
+      DoctorSearchScreen(), // at index 0, Search
       Home(), // at index 1, Home
       HealthData(), // at index 2, Health Data
     ];
@@ -49,12 +49,14 @@ class _NavigationState extends State<Navigation>
     assert(_kTabPages.length == _kBottomNavBarItems.length);
 
     final bottomNavBar = BottomNavigationBar(
-      // backgroundColor: Colors.green,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      backgroundColor: Theme.of(context).primaryColor,
       // unselectedItemColor: Colors.white,
       // selectedItemColor: Colors.lightGreenAccent,
       items: _kBottomNavBarItems,
       currentIndex: _currentTabIndex,
-      type: BottomNavigationBarType.shifting,
+      // type: BottomNavigationBarType.shifting,
       onTap: (int index) {
         setState(() {
           _currentTabIndex = index;

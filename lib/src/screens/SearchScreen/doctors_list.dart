@@ -24,6 +24,11 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
     
     return Scaffold(
       backgroundColor: kWhiteColor,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text("Doctors List"),
+        // centerTitle: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

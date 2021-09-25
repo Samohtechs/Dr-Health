@@ -51,7 +51,7 @@ class _DoctorListState extends State<DoctorList>{
             ),
           );
         },
-        child: Text("VIEW", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.greenAccent),),
+        child: Text("VIEW", style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),),
       ) ,
     );
   }

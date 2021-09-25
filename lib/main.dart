@@ -1,4 +1,4 @@
-import 'package:dr_health/src/components/navigations.dart';
+import 'package:dr_health/src/components/navigation.dart';
 import 'package:dr_health/src/screens/CoronaScreen/corona_stats_screen.dart';
 import 'package:dr_health/src/screens/MedicineScreen/add_new_medicine.dart';
 import 'package:dr_health/src/screens/SettingsScreen/settings.dart';
@@ -33,7 +33,7 @@ class _MedicineAppState extends State<MedicineApp> {
       theme: ThemeData(
           fontFamily: "Popins",
           //////////////////////////
-          primaryColor: Colors.green,
+          primaryColor: Colors.green.shade900, //Colors.green,
           /////////////////////////////// //Color.fromRGBO(7, 190, 200, 1),
           textTheme: TextTheme(
               headline1: ThemeData.light().textTheme.headline1.copyWith(

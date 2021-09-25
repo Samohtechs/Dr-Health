@@ -16,10 +16,10 @@ class AppDrawer extends StatelessWidget {
               curve: Curves.bounceInOut,
               duration: const Duration(milliseconds: 300),
               decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: Theme.of(context).primaryColor, //Colors.green,
                   shape: BoxShape.rectangle,
                   image: DecorationImage(
-                    image: AssetImage('assets/images/doctor1.png'),
+                    image: AssetImage('assets/images/doctor100.png'),
                   )),
               child: Text(""),
             ),

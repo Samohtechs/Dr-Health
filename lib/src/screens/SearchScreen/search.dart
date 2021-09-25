@@ -3,7 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dr_health/src/handlers/firebase_search_controller.dart';
 import 'package:dr_health/src/screens/DetailScreen/detail_screen.dart';
-import 'package:dr_health/src/screens/SearchScreen/search_screen.dart';
+import 'package:dr_health/src/screens/SearchScreen/doctors_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
