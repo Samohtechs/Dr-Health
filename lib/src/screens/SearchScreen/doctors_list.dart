@@ -47,24 +47,22 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
                           children: [
                             CircularProgressIndicator(),
                             SizedBox(height: 8.0),
-                            Text("Not currently connected to any asynchronous computation", textAlign: TextAlign.center,),
+                            Text("No Connection and No Cached Data...", textAlign: TextAlign.center,),
                           ]
                         ),
                       ); 
-                    }
-                    if(snapshot.connectionState != ConnectionState.active) {
+                    } else if(snapshot.connectionState != ConnectionState.active) {
                       return Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircularProgressIndicator(),
                             SizedBox(height: 8.0),
-                            Text("Not Connected to an active asynchronous computation.", textAlign: TextAlign.center,),
+                            Text("No Active Connection.", textAlign: TextAlign.center,),
                           ]
                         ),
                       ); 
-                    }
-                    if(snapshot.connectionState == ConnectionState.waiting) {
+                    } else if(snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -76,28 +74,26 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
                         ),
                       ); 
                     }
-                    try {
-                      final data = snapshot.requireData;  
-                      return ListView.builder(
-                        itemCount: data.size,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                    final data = snapshot.requireData;  
+                    return ListView.builder(
+                      itemCount: data.size,
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
+                        try {
                           doctorName = data.docs[index]['Fname'] + ' ' + data.docs[index]['Lname'];
                           doctorPos = data.docs[index]['Position'];
                           doctorAbout = data.docs[index]['About'];
                           doctorProfile = data.docs[index]['Profile'];
                           doctorPhoneNo = data.docs[index]['Contact'];
                           doctorWhatsAppNo = data.docs[index]['WhatsApp_Contact'];
-                          return DoctorList(
-                            doctorName!, doctorPos!, doctorProfile!, doctorAbout!, doctorPhoneNo!, doctorWhatsAppNo!
-                          );
-                        }
-                      ); 
-                    } catch(Ex) {
-                      return Container();
-                    }
+                        } catch(Ex) {print("ERROR");}
+                        return DoctorList(
+                          doctorName!, doctorPos!, doctorProfile!, doctorAbout!, doctorPhoneNo!, doctorWhatsAppNo!
+                        );
+                      }
+                    ); 
                   }
                 ),
               ),

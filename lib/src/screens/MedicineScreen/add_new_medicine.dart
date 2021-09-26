@@ -247,10 +247,11 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
 
   Future<void> openTimePicker() async {
     await showTimePicker(
-            context: context,
-            initialTime: TimeOfDay.now(),
-            helpText: "Choose Time")
-        .then((value) {
+      context: context,
+      initialTime: TimeOfDay.now(),
+      helpText: "Choose Time",
+      confirmText: "Set Time",
+    ).then((value) {
       DateTime newDate = DateTime(
           setDate.year,
           setDate.month,
@@ -268,11 +269,14 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
   //-------------------------SHOW DATE PICKER AND CHANGE CURRENT CHOOSE DATE-------------------------------
   Future<void> openDatePicker() async {
     await showDatePicker(
-            context: context,
-            initialDate: setDate,
-            firstDate: DateTime.now(),
-            lastDate: DateTime.now().add(Duration(days: 100000)))
-        .then((value) {
+        context: context,
+        initialDate: setDate,
+        confirmText: "Set Date",
+        helpText: "Choose Time",
+        firstDate: DateTime.now(),
+        lastDate: DateTime.now().add(Duration(days: 100000),
+      ),
+    ).then((value) {
       DateTime newDate = DateTime(
           value != null ? value.year : setDate.year,
           value != null ? value.month : setDate.month,
@@ -328,7 +332,7 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
           snackbar.showSnack("Something went wrong", _scaffoldKey, null);
           return;
         } else {
-          //set the notification schneudele
+          //set the notification schedule
           tz.initializeTimeZones();
           tz.setLocalLocation(tz.getLocation('Africa/Nairobi'));
           await _notifications.showNotification(
@@ -336,9 +340,9 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
               pill.description +
                   "\n" +
                   pill.amount +
-                  " " +
+                  ". " +
                   pill.medicineForm +
-                  " Type: " +
+                  "Type: " +
                   pill.type,
               time,
               pill.notifyId,
@@ -350,7 +354,7 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
       }
       //---------------------------------------------------------------------------------------
       snackbar.showSnack("Saved", _scaffoldKey, null);
-      Navigator.pop(context);
+      Navigator.pushReplacementNamed(context, "/");
     }
   }
 

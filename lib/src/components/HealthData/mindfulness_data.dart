@@ -61,7 +61,7 @@ class MindfulnessData extends StatelessWidget {
                           ),
                           child: Align(
                             alignment: Alignment.center,
-                            child: MyVideoPlayer(assetFile: "assets/videos/Everyday_mindfulness.mp4",)
+                            child: MyVideoPlayer(assetFile: "assets/videos/Apple_Health_Mindfulness.mp4",)
                           ),
                         ),
                       ],

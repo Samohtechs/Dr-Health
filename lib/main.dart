@@ -8,13 +8,14 @@ import 'package:flutter/services.dart';
 import 'package:dr_health/src/screens/index.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+
 void main() async {
-  runApp(MedicineApp());
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  await SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.black.withOpacity(0.05),
     statusBarColor: Colors.black.withOpacity(0.05),
     statusBarIconBrightness: Brightness.dark
   ));
+  runApp(MedicineApp());
 }
 
 class MedicineApp extends StatefulWidget {

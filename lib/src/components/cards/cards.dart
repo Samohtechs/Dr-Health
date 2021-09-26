@@ -25,7 +25,7 @@ class HealthCatCard extends StatelessWidget {
               title: 'Activity',
               panelColor: Colors.red,
               textColor: Colors.white,
-              imageBanner: "assets/images/sleep_banner.png",
+              // imageBanner: "assets/images/sleep_banner.png",
             ),
             onTap: () {
               Navigator.push(
@@ -40,7 +40,7 @@ class HealthCatCard extends StatelessWidget {
               title: 'Mindfulness',
               panelColor: Colors.green,
               textColor: Colors.white,
-              imageBanner: "assets/images/sleep_banner.png",
+              // imageBanner: "assets/images/sleep_banner.png",
             ),
             onTap: () {
               Navigator.push(
@@ -55,7 +55,7 @@ class HealthCatCard extends StatelessWidget {
               title: 'Nutrition',
               panelColor: Colors.blue,
               textColor: Colors.white,
-              imageBanner: "assets/images/sleep_banner.png",
+              // imageBanner: "assets/images/sleep_banner.png",
             ),
             onTap: () {
               Navigator.push(
@@ -70,7 +70,7 @@ class HealthCatCard extends StatelessWidget {
               title: 'Sleep',
               panelColor: Colors.black45,
               textColor: Colors.white,
-              imageBanner: "assets/images/sleep_banner.png",
+              // imageBanner: "assets/images/sleep_banner.png",
             ),
             onTap: () {
               Navigator.push(
@@ -90,10 +90,10 @@ class HealthCatCardStyle extends StatelessWidget {
   final Color panelColor;
   final Color textColor;
   final String title;
-  final String imageBanner;
+  final imageBanner;
 
-  const HealthCatCardStyle(
-      {Key? key, required this.panelColor, required this.textColor, required this.title, required this.imageBanner})
+  HealthCatCardStyle(
+      {Key? key, required this.panelColor, required this.textColor, required this.title, this.imageBanner})
       : super(key: key);
 
   @override
@@ -109,7 +109,7 @@ class HealthCatCardStyle extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Align(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.only(left: 18.0),
                 child: Text(
@@ -122,14 +122,14 @@ class HealthCatCardStyle extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Image.asset(
-                imageBanner,
-              ),
-            ),
-          )
+          // Expanded(
+          //   child: Align(
+          //     alignment: Alignment.centerRight,
+          //     child: Image.asset(
+          //       imageBanner,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

@@ -40,6 +40,7 @@ dependencies:
   curved_navigation_bar: ^1.0.1
   flutter_speed_dial: ^4.4.0+1
   shared_preferences: ^2.0.6
+  # flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:

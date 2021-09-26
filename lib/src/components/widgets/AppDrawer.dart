@@ -26,7 +26,7 @@ class AppDrawer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 15.0),
               child: Text(
-                "University Health Centre (UHC)",
+                "Websites",
                 style: TextStyle(
                   color: Colors.black38,
                   fontSize: whSize * 6,
@@ -34,7 +34,7 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.web_outlined, size: whSize * 15,),
+              leading: Icon(Icons.web_rounded, size: whSize * 15, color: Theme.of(context).primaryColor,),
               title: Text(
                 'Visit UHC Website',
                 style: TextStyle(
@@ -46,7 +46,30 @@ class AppDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.mail_outline_outlined, size: whSize * 15,),
+              leading: Icon(Icons.web_rounded, size: whSize * 15, color: Theme.of(context).primaryColor,),
+              title: Text(
+                'Visit UCC Website',
+                style: TextStyle(
+                  fontSize: whSize * 7,
+                ),
+              ),
+              onTap: () {
+                launch('https://www.ucc.co.tz/');
+              },
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                "Communicate",
+                style: TextStyle(
+                  color: Colors.black38,
+                  fontSize: whSize * 6,
+                ),
+              ),
+            ),
+              ListTile(
+              leading: Icon(Icons.mail, size: whSize * 15, color: Theme.of(context).primaryColor,),
               title: Text(
                 'Mail UHC',
                 style: TextStyle(
@@ -62,23 +85,11 @@ class AppDrawer extends StatelessWidget {
                   await launch(url);
                 } else {
                   launch(url);
-                  print('launched');
                 }
               },
             ),
-            Divider(),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0),
-              child: Text(
-                "Communicate",
-                style: TextStyle(
-                  color: Colors.black38,
-                  fontSize: whSize * 6,
-                ),
-              ),
-            ),
             ListTile(
-              leading: Icon(Icons.feedback, size: whSize * 15,),
+              leading: Icon(Icons.feedback, size: whSize * 15, color: Theme.of(context).primaryColor,),
               title: Text(
                 'Feedback',
                 style: TextStyle(
@@ -94,13 +105,22 @@ class AppDrawer extends StatelessWidget {
                   await launch(url);
                 } else {
                   launch(url);
-                  print('launched');
                 }
               },
             ),
             Divider(),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                "Settings",
+                style: TextStyle(
+                  color: Colors.black38,
+                  fontSize: whSize * 6,
+                ),
+              ),
+            ),
             ListTile(
-              leading: Icon(Icons.settings, size: whSize * 15,),
+              leading: Icon(Icons.settings, size: whSize * 15, color: Theme.of(context).primaryColor,),
               title: Text(
                 'Settings',
                 style: TextStyle(

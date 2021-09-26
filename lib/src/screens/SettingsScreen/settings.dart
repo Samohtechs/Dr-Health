@@ -4,7 +4,6 @@
 
 import 'package:dr_health/src/constant.dart';
 import 'package:dr_health/src/handlers/datasource_handler.dart';
-import 'package:dr_health/src/utils/med_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:system_settings/system_settings.dart';
 
@@ -14,15 +13,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
-  String? _defaultSound;
-  bool isSoundNotDefault = false;
-  
-  @override
-  void initState() {
-    super.initState();
-    _defaultSound = MedicinePreferences.getAlarmRingtone();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +50,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.settings_applications),
+                leading: Icon(Icons.settings_applications, color: Theme.of(context).primaryColor,),
                 title: Text(
                   "Notifications Settings",
                   style: TextStyle(
@@ -80,7 +70,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 onTap: () => SystemSettings.appNotifications(),
               ),
               ListTile(
-                leading: Icon(Icons.info),
+                leading: Icon(Icons.info, color: Theme.of(context).primaryColor,),
                 title: Text(
                   "Application Info",
                   style: TextStyle(
@@ -99,63 +89,66 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 onTap: () => SystemSettings.app(),
               ),
-              ExpansionTile(
-                leading: Icon(Icons.notifications),
-                title: Text(
-                  'Notifications',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    "Set Notification Sound",
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                      child: ListTile(
-                        leading: Icon(Icons.notifications_active),
-                        title: Text(
-                          "Alarm Ringtone",
-                          style: TextStyle(
-                            color: Colors.black87,
-                          ),
-                        ),
-                        subtitle:  DropdownButton<String>(
-                          value: _defaultSound,
-                          style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w600),
-                          items: <String>['long\ cold\ sting', 'simplesound']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value.replaceAll(' ', ''),
-                              child: Text(value),
-                            );
-                          }).toList(),
-                          hint: Text(
-                            MedicinePreferences.getAlarmRingtone()?.replaceAll('', ' ') ?? 'long cold sting (Default)',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        onChanged: (String? value) {
-                          setState(() {
-                            _defaultSound = value!.replaceAll(' ', '');
-                            MedicinePreferences.setAlarmRingtone(_defaultSound!);
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // ExpansionTile(
+              //   textColor: Theme.of(context).primaryColor,
+              //   iconColor: Theme.of(context).primaryColor,
+              //   leading: Icon(Icons.notifications, color: Theme.of(context).primaryColor,),
+              //   title: Text(
+              //     'Notifications',
+              //     style: TextStyle(
+              //       fontWeight: FontWeight.w600,
+              //     ),
+              //   ),
+              //   subtitle: Padding(
+              //     padding: const EdgeInsets.only(top: 8.0),
+              //     child: Text(
+              //       "Set Notification Sound",
+              //       style: TextStyle(
+              //         fontSize: 13.5,
+              //         color: Colors.black87,
+              //       ),
+              //     ),
+              //   ),
+              //   children: [
+              //     Align(
+              //       alignment: Alignment.centerLeft,
+              //         child: ListTile(
+              //           leading: Icon(Icons.notifications_active),
+              //           title: Text(
+              //             "Alarm Ringtone",
+              //             style: TextStyle(
+              //               color: Colors.black87,
+              //             ),
+              //           ),
+              //           subtitle:  DropdownButton<String>(
+              //             value: _defaultSound,
+              //             style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w600),
+              //             items: <String>['long\ cold\ sting', 'simplesound']
+              //                 .map<DropdownMenuItem<String>>((String value) {
+              //               return DropdownMenuItem<String>(
+              //                 value: value.replaceAll(' ', ''),
+              //                 child: Text(value),
+              //               );
+              //             }).toList(),
+              //             hint: Text(
+              //               MedicinePreferences.getAlarmRingtone()?.replaceAll('', ' ') ?? 'long cold sting (Default)',
+              //             style: TextStyle(
+              //               color: Colors.black,
+              //               fontWeight: FontWeight.w600,
+              //             ),
+              //           ),
+              //           onChanged: (String? value) async {
+              //               String _newSound = value!.replaceAll(' ', '');
+              //               await MedicinePreferences.setAlarmRingtone(_newSound);
+              //             setState(() {
+              //               _defaultSound = _newSound;
+              //             });
+              //           },
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0, left: 15.0, bottom: 0.9),
                 child: Align(
@@ -179,7 +172,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 itemCount: DataSource.licenceAndTerms.length,
                 itemBuilder: (context, index) {
                   return ExpansionTile(
-                    leading: Icon(Icons.read_more),
+                    textColor: Theme.of(context).primaryColor,
+                    iconColor: Theme.of(context).primaryColor,
+                    leading: Icon(Icons.read_more, color: Theme.of(context).primaryColor,),
                     title: Text(
                       DataSource.licenceAndTerms[index]['Title'],
                       style: TextStyle(fontWeight: FontWeight.w600),
@@ -212,7 +207,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: ListTile(
-                    leading: Icon(Icons.menu_book_outlined),
+                    leading: Icon(Icons.menu_book_outlined, color: Theme.of(context).primaryColor,),
                     title: Text(
                       "Dr. Health",
                       style: TextStyle(

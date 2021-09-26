@@ -105,46 +105,46 @@ class _HealhDataState extends State<HealthData> {
               ),
               // END CORONA UPDATES
               // WHY DRINKING WATER
-              InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 12.0, right: 10.0, bottom: 5.0, left: 10.0),
-                  child: ListTile(
-                    title: Text(
-                      'DRINKING WATER',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'The Benefits of Water in our daily life',
-                          style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                        Text(
-                          '(Click the card to learn more)',
-                          style: TextStyle(
-                            color: Colors.blueGrey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    isThreeLine: true,
-                    trailing: Image.asset('assets/images/water_guide.gif'),
-                    tileColor: Colors.lightBlueAccent,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                      vertical: 10.0,
-                    )
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pushNamed(context, 'CoronaUpdateScreen');
-                },
-              ),
+              // InkWell(
+              //   child: Padding(
+              //     padding: const EdgeInsets.only(top: 12.0, right: 10.0, bottom: 5.0, left: 10.0),
+              //     child: ListTile(
+              //       title: Text(
+              //         'DRINKING WATER',
+              //         style: TextStyle(
+              //           fontWeight: FontWeight.bold,
+              //         ),
+              //       ),
+              //       subtitle: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           Text(
+              //             'The Benefits of Water in our daily life',
+              //             style: TextStyle(
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //           Text(
+              //             '(Click the card to learn more)',
+              //             style: TextStyle(
+              //               color: Colors.blueGrey,
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //       isThreeLine: true,
+              //       trailing: Image.asset('assets/images/water_guide.gif'),
+              //       tileColor: Colors.lightBlueAccent,
+              //       contentPadding: const EdgeInsets.symmetric(
+              //         horizontal: 10.0,
+              //         vertical: 10.0,
+              //       )
+              //     ),
+              //   ),
+              //   onTap: () {
+              //     Navigator.pushNamed(context, 'CoronaUpdateScreen');
+              //   },
+              // ),
               // END WHY DRINKING WATER
             ],
           ),

@@ -9,7 +9,6 @@ class MedicinePreferences {
   static const _keyMedDescription = 'meddescription';
   static const _keyMedTime = 'medtime';
   static const _keyAlarmSound = 'alarmsound';
-  static const _keyUserEmailAddress = 'useremailaddress';
 
   static Future init() async => _preferences = await SharedPreferences.getInstance();
 
@@ -29,12 +28,5 @@ class MedicinePreferences {
 
   static String? getAlarmRingtone() => _preferences?.getString(_keyAlarmSound);
 
-  // static Future removeAlarmRingtone() async => await _preferences?.remove(_keyAlarmSound);
-
-  static List<String>? getAllAlarmRingtone() => _preferences?.getStringList(_keyMedName);
-
-  static Future setUserEmail(String useremailaddress) async => await _preferences?.setString(_keyUserEmailAddress, useremailaddress);
-
-  static String? getUserEmail() => _preferences?.getString(_keyUserEmailAddress);
 
 }

@@ -61,7 +61,7 @@ class SleepData extends StatelessWidget {
                           ),
                           child: Align(
                             alignment: Alignment.center,
-                            child: MyVideoPlayer(assetFile: "assets/videos/Understanding_the_Importance_of_Sleep.mp4",)
+                            child: MyVideoPlayer(assetFile: "assets/videos/Apple_Health_Sleep.mp4",)
                           ),
                         ),
                       ],

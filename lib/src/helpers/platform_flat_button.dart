@@ -13,8 +13,8 @@ class PlatformFlatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      color: this.color,
       child: this.buttonChild,
+      color: this.color,
       onPressed: this.handler,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0)),

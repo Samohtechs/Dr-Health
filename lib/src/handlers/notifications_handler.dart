@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:dr_health/src/utils/med_preference.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -23,11 +23,9 @@ class Notifications {
     //======================================================================================================
   }
 
+
   //---------------------------------| Show the notification in the specific time |-------------------------------
   Future showNotification(String title, String description, int time, int id, FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-  bool isAlarmSet = false;
-  final String _alarmName = isAlarmSet ? MedicinePreferences.getAlarmRingtone() : 'longcoldsting';
-  print(_alarmName);
     await flutterLocalNotificationsPlugin.zonedSchedule(
         id.toInt(),
         title,
@@ -40,20 +38,20 @@ class Notifications {
                 'Dr Health Mediciation Reminder', // channel route
                 playSound: true,
                 showWhen: true,
-                // autoCancel: true,
+                autoCancel: true,
                 visibility: NotificationVisibility.public,
-                // ongoing: true,
+                ongoing: true,
                 enableVibration: true,
-                vibrationPattern: Int64List.fromList([8]),
-                // enableLights: true,
+                vibrationPattern: Int64List.fromList([8, 8, 8, 8]),
+                enableLights: true,
                 subText: "Med Reminder",
                 icon: 'launcher_logo',
                 largeIcon: DrawableResourceAndroidBitmap('launcher_logo'),
-                sound: RawResourceAndroidNotificationSound('$_alarmName'), // 'longcoldsting'
+                sound: RawResourceAndroidNotificationSound('longcoldsting'),
                 color: Colors.cyanAccent,
                 importance: Importance.high,
                 priority: Priority.high,
-                additionalFlags: Int32List.fromList([4]),
+                additionalFlags: Int32List.fromList([4, 4, 4, 4]),
               )
             ),
         androidAllowWhileIdle: true,
@@ -82,8 +80,8 @@ class Notifications {
       context: _context,
       builder: (_) {
         return new AlertDialog(
-          title: Text("Reminder"),
-          content: Text("Congratulations\nMedicine Taken. : $payload"),
+          title: Text("Congratulations", style: TextStyle(fontWeight: FontWeight.bold),),
+          content: Text("Medicine Taken."),
         );
       },
     );

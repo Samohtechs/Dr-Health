@@ -20,64 +20,67 @@ class MedicineCard extends StatelessWidget {
     final bool isEnd = DateTime.now().millisecondsSinceEpoch > medicine.time;
 
     return Card(
-        elevation: 8.0,
-        margin: EdgeInsets.symmetric(vertical: 7.0),
-        color: Theme.of(context).primaryColor.withOpacity(1.0), //Colors.white,
-        child: ListTile(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            onLongPress: () =>
-                _showDeleteDialog(context, medicine.name, medicine.id, medicine.notifyId),
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
-            title: Text(
-              medicine.name,
-              style: Theme.of(context).textTheme.headline1.copyWith(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  decoration: isEnd ? TextDecoration.lineThrough : null),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            subtitle: Text(
-              "${medicine.description}" + "\n" + "${medicine.amount} ${medicine.medicineForm}",
-              style: Theme.of(context).textTheme.headline5.copyWith(
+      shadowColor: Colors.greenAccent.shade200,
+      elevation: 8.0,
+      margin: EdgeInsets.symmetric(vertical: 7.0),
+      color: Theme.of(context).primaryColor.withOpacity(1.0), //Colors.white,
+      child: ListTile(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        onLongPress: () =>
+            _showDeleteDialog(context, medicine.name, medicine.id, medicine.notifyId),
+        contentPadding:
+            EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+        title: Text(
+          medicine.name,
+          style: Theme.of(context).textTheme.headline1.copyWith(
+              color: Colors.white70,
+              fontSize: 20.0,
+              decoration: isEnd ? TextDecoration.lineThrough : null),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Text(
+          "${medicine.description}" + "\n" + "${medicine.amount} ${medicine.medicineForm}",
+          style: Theme.of(context).textTheme.headline5.copyWith(
+              color: Colors.white70,
+              fontSize: 15.0,
+              fontWeight: FontWeight.w500,
+              decoration: isEnd ? TextDecoration.lineThrough : null),
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+        ),
+        isThreeLine: true,
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              DateFormat("HH:mm").format(
+                  DateTime.fromMillisecondsSinceEpoch(medicine.time)),
+              style: TextStyle(
                   color: Colors.white70,
-                  fontSize: 15.0,
                   fontWeight: FontWeight.w500,
+                  fontSize: 15,
                   decoration: isEnd ? TextDecoration.lineThrough : null),
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
             ),
-            isThreeLine: true,
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  DateFormat("HH:mm").format(
-                      DateTime.fromMillisecondsSinceEpoch(medicine.time)),
-                  style: TextStyle(
-                      color: Colors.white70,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15,
-                      decoration: isEnd ? TextDecoration.lineThrough : null),
-                ),
-              ],
-            ),
-            leading: Container(
-              width: 60.0,
-              height: 60.0,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: ColorFiltered(
-                    colorFilter: ColorFilter.mode(
-                        isEnd ? Colors.white : Colors.transparent,
-                        BlendMode.saturation),
-                    child: Image.asset(
-                      medicine.image
-                    )),
-              ),
-            )));
+          ],
+        ),
+        leading: Container(
+          width: 60.0,
+          height: 60.0,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(50.0),
+            child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                    isEnd ? Colors.white : Colors.transparent,
+                    BlendMode.saturation),
+                child: Image.asset(
+                  medicine.image
+                )),
+          ),
+        ),
+      ),
+    );
   }
 
 

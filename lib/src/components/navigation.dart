@@ -40,7 +40,6 @@ class _NavigationState extends State<Navigation> {
           padding: const EdgeInsets.only(top: 38.0),
           child: CurvedNavigationBar(
             color: Theme.of(context).primaryColor,
-            buttonBackgroundColor: Theme.of(context).primaryColor,
             backgroundColor: Colors.transparent,
             height: 60,
             animationCurve: Curves.easeInOut,

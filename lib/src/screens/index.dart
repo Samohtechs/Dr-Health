@@ -74,7 +74,6 @@ class _HomeState extends State<Home> {
       icon: Icons.control_point_rounded,
       // animatedIcon: AnimatedIcons.menu_close,
       backgroundColor: Theme.of(context).primaryColor,
-      activeBackgroundColor: Colors.transparent,
       overlayColor: Colors.black,
       overlayOpacity: 0.4,
       spacing: 12,
@@ -89,13 +88,13 @@ class _HomeState extends State<Home> {
           label: 'Add Reminder',
           onTap: () => Navigator.pushNamed(context, '/AddNewMedicine'),
         ),
-        SpeedDialChild(
-          child: Icon(Icons.qr_code_2_rounded),
-          backgroundColor: Theme.of(context).primaryColor.withOpacity(1.0),
-          foregroundColor: Colors.white,
-          label: 'Scan QR Code',
-          onTap: () => {},
-        )
+        // SpeedDialChild(
+        //   child: Icon(Icons.qr_code_2_rounded),
+        //   backgroundColor: Theme.of(context).primaryColor.withOpacity(1.0),
+        //   foregroundColor: Colors.white,
+        //   label: 'Scan QR Code',
+        //   onTap: () => {},
+        // )
       ],
     );
     // HOME BODY
@@ -108,12 +107,10 @@ class _HomeState extends State<Home> {
           return true;
         }
       },
-      child: SafeArea(
-        top: false, left: false, right: false,
-        minimum: EdgeInsets.only(bottom: 5.0),
-        child: Scaffold(
-          floatingActionButton: addReminderButton,
-          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      child: Scaffold(
+          // resizeToAvoidBottomInset: true,
+          floatingActionButton: Container(child: addReminderButton, margin: EdgeInsets.only(bottom: 65.0),),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           backgroundColor: Color.fromRGBO(248, 248, 248, 1),
           // APPLICATION BAR
           appBar: AppBar(
@@ -123,14 +120,17 @@ class _HomeState extends State<Home> {
                 onTap: () {
                   Navigator.pushNamed(context, '/AddNewMedicine');
                 },
-                child: ShakeAnimatedWidget(
-                  enabled: true,
-                  duration: Duration(milliseconds: 2000),
-                  curve: Curves.linear,
-                  shakeAngle: Rotation.deg(z: 30),
-                  child: Icon(
-                    Icons.notifications_none,
-                    size: 35.0,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 25.0),
+                  child: ShakeAnimatedWidget(
+                    enabled: true,
+                    duration: Duration(milliseconds: 2000),
+                    curve: Curves.linear,
+                    shakeAngle: Rotation.deg(z: 30),
+                    child: Icon(
+                      Icons.notifications_none,
+                      size: 35.0,
+                    ),
                   ),
                 ),
               ),
@@ -199,7 +199,6 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
-      ),
     );
   }
 
