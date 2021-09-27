@@ -87,7 +87,6 @@ class _ActivityDataState extends State<ActivityData> {
                           style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.normal),
                         ),
                       ),
-                      trailing: Text("1.3621 steps"),
                     ),
                   ),
                 ],

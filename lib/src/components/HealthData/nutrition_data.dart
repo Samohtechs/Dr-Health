@@ -72,34 +72,9 @@ class NutritionData extends StatelessWidget {
                       children: [
                         ListTile(
                           title: Text(
-                            "Protein",
-                            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                            "Nutrition is the study of nutrients in food, how the body uses them, and the relationship between diet, health, and disease. Nutritionists use ideas from molecular biology, biochemistry, and genetics to understand how nutrients affect the human body.",
+                            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal),
                           ),
-                          trailing: Icon(Icons.arrow_forward_ios),
-                        ),
-                        ListTile(
-                          title: Text(
-                            "Vitamin A",
-                            style:
-                                TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios),
-                        ),
-                        ListTile(
-                          title: Text(
-                            "Vitamin B12",
-                            style:
-                                TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios),
-                        ),
-                        ListTile(
-                          title: Text(
-                            "Water",
-                            style:
-                                TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios),
                         ),
                       ],
                     ),
