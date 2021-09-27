@@ -57,7 +57,8 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget buildProfileImage() => CircleAvatar(
     radius: profileHeight / 2,
     backgroundColor: Colors.grey.shade800,
-    backgroundImage: NetworkImage(widget._imageUrl),
+    backgroundImage: AssetImage('assets/images/avatar_profile.jpg'),
+    foregroundImage:  NetworkImage(widget._imageUrl),
   );
 
   Widget buildTop() {

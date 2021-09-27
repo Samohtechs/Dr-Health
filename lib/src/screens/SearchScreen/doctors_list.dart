@@ -39,30 +39,7 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
                 child: StreamBuilder<QuerySnapshot>(
                   stream: users,
                   builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    
-                    if(snapshot.connectionState == ConnectionState.none) {
-                      return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularProgressIndicator(),
-                            SizedBox(height: 8.0),
-                            Text("No Connection and No Cached Data...", textAlign: TextAlign.center,),
-                          ]
-                        ),
-                      ); 
-                    } else if(snapshot.connectionState != ConnectionState.active) {
-                      return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularProgressIndicator(),
-                            SizedBox(height: 8.0),
-                            Text("No Active Connection.", textAlign: TextAlign.center,),
-                          ]
-                        ),
-                      ); 
-                    } else if(snapshot.connectionState == ConnectionState.waiting) {
+                    if(snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

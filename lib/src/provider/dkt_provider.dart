@@ -20,7 +20,6 @@ class DoctorList extends StatefulWidget {
 }
 
 class _DoctorListState extends State<DoctorList> {
-  bool isProfile = false;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -31,8 +30,8 @@ class _DoctorListState extends State<DoctorList> {
           minRadius: 45,
           maxRadius: 50,
           backgroundColor: Colors.transparent,
-          foregroundImage: isProfile ? NetworkImage(widget.doctorProfile) : null,
-          backgroundImage: AssetImage('assets/images/loading.gif'),
+          backgroundImage: AssetImage('assets/images/avatar_profile.jpg'),
+          foregroundImage: NetworkImage(widget.doctorProfile),
         ),
       ), //Icon(Icons.person),
       title: Padding(
