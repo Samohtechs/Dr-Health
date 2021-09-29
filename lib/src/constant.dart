@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+var mainColor = Color(0xff1E1C61);
 var kBackgroundColor = Colors.indigo[100];
 var kWhiteColor = Color(0xffffffff);
 var kOrangeColor = Color(0xffEF716B);

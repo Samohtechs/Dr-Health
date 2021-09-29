@@ -19,15 +19,17 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
     String? doctorPos;
     String? doctorProfile;
     String? doctorAbout;
-    String? doctorPhoneNo;
-    String? doctorWhatsAppNo;
+    String? receptionPhone;
+    String? receptionEmail;
+    String? doctorAvailability;
     
     return Scaffold(
       backgroundColor: kWhiteColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text("Doctors List"),
-        // centerTitle: true,
+        title: Text(
+          "Doctors List",
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -74,13 +76,14 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
                         try {
                           doctorName = data.docs[index]['Fname'] + ' ' + data.docs[index]['Lname'];
                           doctorPos = data.docs[index]['Position'];
-                          doctorAbout = data.docs[index]['About'];
                           doctorProfile = data.docs[index]['Profile'];
-                          doctorPhoneNo = data.docs[index]['Contact'];
-                          doctorWhatsAppNo = data.docs[index]['WhatsApp_Contact'];
+                          doctorAbout = data.docs[index]['About'];
+                          receptionPhone = data.docs[index]['Contact'];
+                          receptionEmail = data.docs[index]['Email_Address'];
+                          doctorAvailability = data.docs[index]['Available'];
                         } catch(Ex) {print("ERROR");}
                         return DoctorList(
-                          doctorName!, doctorPos!, doctorProfile!, doctorAbout!, doctorPhoneNo!, doctorWhatsAppNo!
+                          doctorName!, doctorPos!, doctorProfile!, doctorAbout!, receptionPhone!, receptionEmail!, doctorAvailability!
                         );
                       }
                     ); 

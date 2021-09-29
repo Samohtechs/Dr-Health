@@ -3,6 +3,8 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
 import 'package:dr_health/src/screens/HealthDataScreen/health_data_screen.dart';
 import 'package:dr_health/src/screens/SearchScreen/doctors_list.dart';
+// import 'package:dr_health/src/screens/SearchScreen/local_search.dart';
+// import 'package:dr_health/src/screens/SearchScreen/search.dart';
 import 'package:dr_health/src/screens/index.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -19,6 +21,8 @@ class _NavigationState extends State<Navigation> {
   int tabIndex = 1;
 
   final screens = [
+    // LocalSearch(), // 
+    // Search(), // 
     DoctorSearchScreen(), // at index 0, Search
     Home(), // at index 1, Home
     HealthData(), // at index 2, Health Data

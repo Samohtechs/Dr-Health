@@ -26,7 +26,7 @@ class _SearchState extends State<Search> {
             onTap: () {
               Get.to(
                 DetailScreen(
-                  snapshotData!.docs[index]['Fname'] + ' ' + snapshotData!.docs[index]['Lname'], snapshotData!.docs[index]['Profile'], snapshotData!.docs[index]['About'], snapshotData!.docs[index]['Contact'], snapshotData!.docs[index]['WhatsApp_Contact']),
+                  snapshotData!.docs[index]['Fname'] + ' ' + snapshotData!.docs[index]['Lname'], snapshotData!.docs[index]['Position'], snapshotData!.docs[index]['Profile'], snapshotData!.docs[index]['About'], snapshotData!.docs[index]['Contact'], snapshotData!.docs[index]['Available'], snapshotData!.docs[index]['Email_Address']),
                   transition: Transition.downToUp,
                   arguments: snapshotData!.docs[index]
               );

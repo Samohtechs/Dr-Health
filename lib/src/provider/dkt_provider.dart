@@ -10,10 +10,11 @@ class DoctorList extends StatefulWidget {
   String doctorPos;
   String doctorProfile;
   String doctorAbout;
-  String doctorPhoneNo;
-  String? doctorWhatsAppNo;
+  String doctorAvailability;
+  String receptionPhoneNo;
+  String receptionEmail;
 
-  DoctorList(this.doctorName, this.doctorPos, this.doctorProfile, this.doctorAbout, this.doctorPhoneNo, [this.doctorWhatsAppNo]);
+  DoctorList(this.doctorName, this.doctorPos, this.doctorProfile, this.doctorAbout, this.doctorAvailability, this.receptionPhoneNo, this.receptionEmail);
 
   @override
   _DoctorListState createState() => _DoctorListState();
@@ -47,7 +48,7 @@ class _DoctorListState extends State<DoctorList> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => DetailScreen(widget.doctorName, widget.doctorPos, widget.doctorProfile, widget.doctorAbout, widget.doctorPhoneNo, widget.doctorWhatsAppNo),
+              builder: (BuildContext context) => DetailScreen(widget.doctorName, widget.doctorPos, widget.doctorProfile, widget.doctorAbout, widget.doctorAvailability, widget.receptionPhoneNo, widget.receptionEmail),
             ),
           );
         },

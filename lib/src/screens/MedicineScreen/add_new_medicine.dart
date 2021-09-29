@@ -354,7 +354,8 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
       }
       //---------------------------------------------------------------------------------------
       snackbar.showSnack("Saved", _scaffoldKey, null);
-      Navigator.pushReplacementNamed(context, "/");
+      // Navigator.pushReplacementNamed(context, "/home");
+      Navigator.pop(context);
     }
   }
 

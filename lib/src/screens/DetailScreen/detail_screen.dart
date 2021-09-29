@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sms/flutter_sms.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,12 +11,13 @@ class DetailScreen extends StatefulWidget {
   String _position;
   String _imageUrl;
   String _about;
+  String _available;
   String _contact;
-  String? _whatsappContact;
+  String _email;
   String? iconName;
 
   // ignore: non_constant_identifier_names
-  DetailScreen(this._name, this._position, this._imageUrl, this._about, this._contact, [this._whatsappContact]);
+  DetailScreen(this._name, this._position, this._imageUrl, this._about, this._contact, this._email, this._available,);
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
@@ -26,6 +26,8 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   final double coverHeight = 180;
   final double profileHeight = 125;
+  
+  String? url;
 
   @override
   Widget build(BuildContext context) {
@@ -81,9 +83,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  Widget buildSocialIcon(IconData icon, String iconName) { 
-    String _message = "Hello, Dr. ${widget._name},\ni'm texting you from Dr. Health App. I'm in need with some medication advice and if necessary arrage a meeting with you.\nThank you!";
-
+  Widget buildSocialIcon(IconData icon, String iconName) {
     return CircleAvatar(
       radius: 25,
       child: Material(
@@ -91,17 +91,19 @@ class _DetailScreenState extends State<DetailScreen> {
         clipBehavior: Clip.hardEdge,
         color: Theme.of(context).primaryColor.withOpacity(0.9),
         child: InkWell(
-          onTap: () {
+          onTap: () async {
             if (iconName == "phone") {
               launch("tel://${widget._contact}");
-            } else if (iconName == "sms") {
-              launchSms(
-                message: _message,
-                number: '${widget._contact}',  
-              );
-            } else if (iconName == "whatsApp") {
-              String phone = '${widget._whatsappContact}'.replaceAll(' ', '');
-              launch("https://wa.me/$phone/?text=${Uri.parse(_message)}");
+            } else if (iconName == "email") {
+                String toEmail = widget._email; //'healthdr.customer.care@gmail.com';
+                String subject = 'Doctor Appointment Request';
+                String message = '(Please provide your need for an appointment here and you will be notified)';
+                final url = 'mailto:$toEmail?subject=${Uri.encodeFull(subject)}&body=${Uri.encodeFull(message)}';
+                if(await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  launch(url);
+                }
             } else {
               print("AN ERROR OCCURED");
             }
@@ -128,9 +130,23 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 12.0),
+        padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 10.0),
         child: Text(
           widget._about,
+          style: TextStyle(fontSize: 16.5,),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 12.0),
+        child: Text(
+          "Available",
+          style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 10.0),
+        child: Text(
+          widget._available,
           style: TextStyle(fontSize: 16.5,),
         ),
       ),
@@ -148,12 +164,30 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
         const SizedBox(height: 3,),
-        Text(
-          widget._position,
-           style: TextStyle(
-            fontSize: 20,
-            color: Colors.black54,
-            fontWeight: FontWeight.normal,
+        Padding(
+          padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+          child: Text(
+            widget._position,
+             style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width / 20,
+              color: Colors.black54,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ),
+        const SizedBox(height: 4,),
+        Padding(
+          padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+          child: Center(
+            child: Text(
+              "Communicate with Reception for an appointment.",
+               style: TextStyle(
+                fontSize: 15,
+                color: Colors.pinkAccent.shade200,
+                fontWeight: FontWeight.normal,
+              ),
+              textAlign: TextAlign.justify,
+            ),
           ),
         ),
         const SizedBox(height: 16,),
@@ -162,13 +196,11 @@ class _DetailScreenState extends State<DetailScreen> {
           children: [
             buildSocialIcon(FontAwesomeIcons.phoneAlt, "phone"),
             const SizedBox(height: 12, width: 12,),
-            buildSocialIcon(FontAwesomeIcons.sms, "sms"),
-            const SizedBox(height: 12, width: 12,),
-            buildSocialIcon(FontAwesomeIcons.whatsapp, "whatsApp"),
+            buildSocialIcon(Icons.mail_outline, "email"),
             const SizedBox(height: 12,),
           ]
         ),
-        const SizedBox(height: 16,),
+        const SizedBox(height: 14,),
         buildAbout(),
       ],
     );

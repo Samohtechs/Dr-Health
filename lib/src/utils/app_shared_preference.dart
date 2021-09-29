@@ -2,13 +2,15 @@
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MedicinePreferences {
+class AppPreferences {
   static SharedPreferences ? _preferences;
 
   static const _keyMedName = 'medname';
   static const _keyMedDescription = 'meddescription';
   static const _keyMedTime = 'medtime';
   static const _keyAlarmSound = 'alarmsound';
+
+  static const _userEmail = 'useremail';
 
   static Future init() async => _preferences = await SharedPreferences.getInstance();
 
@@ -27,6 +29,10 @@ class MedicinePreferences {
   static Future setAlarmRingtone(String alarmName) async => await _preferences?.setString(_keyAlarmSound, alarmName);
 
   static String? getAlarmRingtone() => _preferences?.getString(_keyAlarmSound);
+
+
+  static Future setUserEmail(String useremail) async => await _preferences?.setString(_userEmail, useremail,);
+  static String? getUserEmail() => _preferences?.getString(_userEmail);
 
 
 }

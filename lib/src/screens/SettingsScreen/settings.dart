@@ -131,7 +131,7 @@ class _SettingsPageState extends State<SettingsPage> {
               //               );
               //             }).toList(),
               //             hint: Text(
-              //               MedicinePreferences.getAlarmRingtone()?.replaceAll('', ' ') ?? 'long cold sting (Default)',
+              //               AppPreferences.getAlarmRingtone()?.replaceAll('', ' ') ?? 'long cold sting (Default)',
               //             style: TextStyle(
               //               color: Colors.black,
               //               fontWeight: FontWeight.w600,
@@ -139,7 +139,7 @@ class _SettingsPageState extends State<SettingsPage> {
               //           ),
               //           onChanged: (String? value) async {
               //               String _newSound = value!.replaceAll(' ', '');
-              //               await MedicinePreferences.setAlarmRingtone(_newSound);
+              //               await AppPreferences.setAlarmRingtone(_newSound);
               //             setState(() {
               //               _defaultSound = _newSound;
               //             });

@@ -1,9 +1,29 @@
 // @dart=2.12
 
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
+import 'package:dr_health/src/auth/auth.dart';
+// import 'package:dr_health/src/auth/login.dart';
+import 'package:dr_health/src/utils/app_shared_preference.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  String user_email = "Dr. Health";
+
+  @override
+  void initState() {
+    super.initState();
+    user_email = AppPreferences.getUserEmail().toString();
+  }
+
   @override
   Widget build(BuildContext context) {
   final whSize = MediaQuery.of(context).size.height / MediaQuery.of(context).size.width;
@@ -68,7 +88,7 @@ class AppDrawer extends StatelessWidget {
                 ),
               ),
             ),
-              ListTile(
+            ListTile(
               leading: Icon(Icons.mail, size: whSize * 15, color: Theme.of(context).primaryColor,),
               title: Text(
                 'Mail UHC',
@@ -130,10 +150,38 @@ class AppDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.popAndPushNamed(context, 'SettingsScreen'); 
               },
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Text(
+                "Logout",
+                style: TextStyle(
+                  color: Colors.black38,
+                  fontSize: whSize * 6,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout_outlined, size: whSize * 15, color: Theme.of(context).primaryColor,),
+              title: Text(
+                'Logout',
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height / MediaQuery.of(context).size.width * 7,
+                ),
+              ),
+              onTap: () {
+                 _signOut();
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()),); 
+              },
             )
           ],
         ),
       ),
     );
   }
+}
+
+Future<void> _signOut() async {
+  await FirebaseAuth.instance.signOut();
 }
