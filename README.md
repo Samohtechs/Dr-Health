@@ -29,9 +29,8 @@ samples, guidance on mobile development, and a full API reference.
 - [x] Delete medicines
 - [x] View Doctor Details
 - [x] View Covid-19 updates
-- [x] Health articles
 
-### snapshotseenshots :
+### snapshots :
 
 <img src= "assets/images/login.png"  width="40%">
 <img src= "assets/images/alarm_screen.png"  width="40%">
