@@ -33,16 +33,16 @@ samples, guidance on mobile development, and a full API reference.
 
 ### snapshotseenshots :
 
-<img src= "snapshots/login.png"  width="40%">
-<img src= "snapshots/alarm_screen.png"  width="40%">
-<img src= "snapshots/add_alarm_btn.png"  width="40%">
-<img src= "snapshots/add_med_form.png"  width="40%">
-<img src= "snapshots/med_list.png"  width="40%">
-<img src= "snapshots/del_dialog.png"  width="40%">
-<img src= "snapshots/dct_list.jpeg"  width="40%">
-<img src= "snapshots/dct_profile.png"  width="40%">
-<img src= "snapshots/sms_dkt.png"  width="40%">
-<img src= "snapshots/health_data.png"  width="40%">
-<img src= "snapshots/sleep_health_data.png"  width="40%">
-<img src= "snapshots/corona_page.png"  width="40%">
-<img src= "snapshots/country_stats.png"  width="40%">
+<img src= "assets/images/login.png"  width="40%">
+<img src= "assets/images/alarm_screen.png"  width="40%">
+<img src= "assets/images/add_alarm_btn.png"  width="40%">
+<img src= "assets/images/add_med_form.png"  width="40%">
+<img src= "assets/images/med_list.png"  width="40%">
+<img src= "assets/images/del_dialog.png"  width="40%">
+<img src= "assets/images/dct_list.jpeg"  width="40%">
+<img src= "assets/images/dct_profile.png"  width="40%">
+<img src= "assets/images/sms_dkt.png"  width="40%">
+<img src= "assets/images/health_data.png"  width="40%">
+<img src= "assets/images/sleep_health_data.png"  width="40%">
+<img src= "assets/images/corona_page.png"  width="40%">
+<img src= "assets/images/country_stats.png"  width="40%">
